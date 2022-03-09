@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1014" height="1014" viewBox="0 0 1014 1014">
+  <defs>
+    <clipPath id="clip-Plan_de_travail_3">
+      <rect width="1014" height="1014"/>
+    </clipPath>
+  </defs>
+  <g id="Plan_de_travail_3" data-name="Plan de travail – 3" clip-path="url(#clip-Plan_de_travail_3)">
+    <path id="Icon_awesome-play-circle" data-name="Icon awesome-play-circle" d="M492.638.563C220.806.563.563,220.806.563,492.638S220.806,984.714,492.638,984.714,984.714,764.47,984.714,492.638,764.47.563,492.638.563Zm229.569,539.7L372.992,740.66c-31.35,17.461-70.835-4.96-70.835-41.668V286.284c0-36.509,39.287-59.128,70.835-41.668L722.207,456.923C754.748,475.177,754.748,522.2,722.207,540.258Z" transform="translate(14.438 14.438)"/>
+  </g>
+</svg>

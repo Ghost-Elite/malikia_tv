@@ -1,0 +1,1 @@
+enum Parts{snippet,contentDetails,id,status}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300" viewBox="0 0 300 300">
+  <defs>
+    <clipPath id="clip-Plan_de_travail_4">
+      <rect width="300" height="300"/>
+    </clipPath>
+  </defs>
+  <g id="Plan_de_travail_4" data-name="Plan de travail – 4" clip-path="url(#clip-Plan_de_travail_4)">
+    <rect width="300" height="300" fill="#fff"/>
+    <path id="Icon_material-replay" data-name="Icon material-replay" d="M90.534,43.767V1.5L37.7,54.334l52.834,52.834V64.9a63.4,63.4,0,1,1-63.4,63.4H6A84.534,84.534,0,1,0,90.534,43.767Z" transform="translate(62.176 26.634)"/>
+    <path id="Icon_awesome-play" data-name="Icon awesome-play" d="M29.841,15.1,5.091.464A3.356,3.356,0,0,0,0,3.368V32.625a3.372,3.372,0,0,0,5.091,2.9L29.841,20.9a3.372,3.372,0,0,0,0-5.808Z" transform="translate(138.96 141.799)"/>
+  </g>
+</svg>

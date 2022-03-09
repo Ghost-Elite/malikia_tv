@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="130" height="93" viewBox="0 0 130 93">
+  <defs>
+    <clipPath id="clip-Plan_de_travail_2">
+      <rect width="130" height="93"/>
+    </clipPath>
+  </defs>
+  <g id="Plan_de_travail_2" data-name="Plan de travail – 2" clip-path="url(#clip-Plan_de_travail_2)">
+    <path id="Icon_material-playlist-play" data-name="Icon material-playlist-play" d="M107.359,32.055H3V44.333H107.359Zm0-24.555H3V19.778H107.359ZM3,68.888H82.8V56.61H3ZM95.082,56.61V93.443l30.694-18.416Z" transform="translate(2 -2.5)"/>
+  </g>
+</svg>

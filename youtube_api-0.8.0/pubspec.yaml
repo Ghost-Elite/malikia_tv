@@ -1,0 +1,20 @@
+name: youtube_api
+description:
+  YouTubeAPI is a plugin which directly interacts with YouTube server. Supports
+  Searching video and playlist.
+version: 0.8.0
+homepage: https://github.com/nitishk72/Youtube_API
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  http: ^0.13.4
+
+environment:
+  sdk: ">=2.0.0 <3.0.0"
+
+flutter:
+  plugin:
+    androidPackage: io.github.nitishk72.youtubeapi.youtubeapi
+    pluginClass: YoutubeApiPlugin
