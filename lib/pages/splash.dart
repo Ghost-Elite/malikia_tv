@@ -256,13 +256,13 @@ class SplashState extends State<SplashScreen> {
             ),
           ),
         ),
-        Positioned(
+        /*Positioned(
           child: Container(
             width: double.infinity,
             alignment: Alignment.bottomCenter,
           child: Text('Website'),
         ),
-        )
+        )*/
       ],
     ); //<- Creates a widget that displays an image.
 

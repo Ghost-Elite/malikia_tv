@@ -157,7 +157,7 @@ class _DrawerPageState extends State<DrawerPage> with SingleTickerProviderStateM
           shrinkWrap: true,
           children: <Widget>[
             DrawerHeader(child: Image.asset("assets/images/2.png",fit: BoxFit.cover,)),
-            SizedBox(height: SizeConfi.screenHeight/14),
+            SizedBox(height: SizeConfi.screenHeight/15),
             ListTile(
               onTap: () {
                 var logger = Logger();
@@ -298,7 +298,7 @@ class _DrawerPageState extends State<DrawerPage> with SingleTickerProviderStateM
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            SizedBox(height: 50,),
+           /* SizedBox(height: 50,),
             ListTile(
               title: Container(
                 alignment: Alignment.bottomCenter,
@@ -307,7 +307,7 @@ class _DrawerPageState extends State<DrawerPage> with SingleTickerProviderStateM
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-            ),
+            ),*/
           ],
         ),
       ),
