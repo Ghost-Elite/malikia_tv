@@ -148,7 +148,7 @@ class _AllPlayListState extends State<AllPlayListScreen> {
                             ),
                           ): Container(),
                           width: MediaQuery.of(context).size.width,
-                          height: 100,
+                          height: 130,
                         ),
                       ),
 

@@ -14,7 +14,7 @@
 
         android:configChanges="orientation|smallestScreenSize|screenLayout|screenSize"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true"

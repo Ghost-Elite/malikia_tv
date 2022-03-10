@@ -15,7 +15,7 @@ class Assets {
   static const String imagesLecteur = 'assets/images/lecteur.svg';
   static const String imagesLock = 'assets/images/lock.svg';
   static const String imagesMalikia = 'assets/images/malikia.png';
-  static const String imagesMalikiaError = 'assets/images/malikiaError.png';
+  static const String imagesMalikiaerr = 'assets/images/malikiaError.png';
   static const String imagesMalikiaerror = 'assets/images/malikiaerror.jpg';
   static const String imagesMenu = 'assets/images/menu.svg';
   static const String imagesPLAY = 'assets/images/PLAY.svg';

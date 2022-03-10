@@ -222,6 +222,7 @@ class _DrawerPageState extends State<DrawerPage> with SingleTickerProviderStateM
                 launchURL(url);
               },*/
               onTap: () {
+                if(widget.betterPlayerController !=null)widget.betterPlayerController.pause();
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => YoutubeVideoPlayList(
 

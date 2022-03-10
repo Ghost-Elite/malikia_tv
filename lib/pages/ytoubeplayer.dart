@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:wakelock/wakelock.dart';
 import 'package:youtube_api/yt_video.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-
+import 'package:jiffy/jiffy.dart';
 import '../constains.dart';
 import 'home_page.dart';
 
@@ -295,15 +295,17 @@ class _YtoubePlayerPageState extends State<YtoubePlayerPage> {
                             ),
                             SizedBox(height: 3,),
                             Container(
-                              margin: EdgeInsets.all(5),
+                             alignment: Alignment.topLeft,
+                              margin: EdgeInsets.all(10),
                               child: Text(
-                                '${widget.ytResult[position].description}',
-                                style: GoogleFonts.roboto(
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 13.0,
-                                    color: colorPrimary),maxLines: 2,
+                                '${Jiffy(widget.ytResult[position].publishedAt,
+                                    "yyyy-MM-ddTHH:mm:ssZ").format("dd/MM/yyyy à HH:mm")} ',
+                                style: GoogleFonts.poppins(
+                                    fontSize: 9.0,color: colorPrimary),maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               ),
+
+
                             )
                           ],
                         ),

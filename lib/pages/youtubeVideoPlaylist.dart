@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logger/logger.dart';
+import 'package:malikia_tv/pages/youtubeEmisions.dart';
 import 'package:malikia_tv/pages/ytoubeplayer.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:http/http.dart' as http;
@@ -105,7 +106,7 @@ class _YoutubeVideoPlayListState extends State<YoutubeVideoPlayList>
       //extendBodyBehindAppBar: true,
       //backgroundColor: Color(0xFF04763c),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: wite,
         elevation: 0,
         centerTitle: true,
         iconTheme: IconThemeData(color: gren,),
@@ -211,17 +212,16 @@ class _YoutubeVideoPlayListState extends State<YoutubeVideoPlayList>
                                               fontWeight: FontWeight.bold,
                                               color: colorPrimary),
                                         )),
-                                    onTap: () {
-                                      /*Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) => ReplayAlBayane(
-                                              listChannelsbygroup: widget.listChannelsbygroup,
-                                              apimalikia: apimalikia,
-                                            )
-                                        ),
-                                      );*/
-                                      var  logger = Logger();
-                                    },
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) => YoutubeEmisionPage(
+                                                ytResultPlaylist: ytResultPlaylist,
+                                              )
+                                          ),
+                                        );
+                                        var  logger = Logger();
+                                      },
                                   )
                                 ],
                               ),
@@ -323,8 +323,8 @@ class _YoutubeVideoPlayListState extends State<YoutubeVideoPlayList>
   Widget makeItemVideos() {
     return GridView.builder(
       shrinkWrap: true,
-      physics: ClampingScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+      physics: const ClampingScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
           //childAspectRatio: 4 / 2,
           crossAxisSpacing: 8,
@@ -343,38 +343,39 @@ class _YoutubeVideoPlayListState extends State<YoutubeVideoPlayList>
                         )),
                         (Route<dynamic> route) => true);
               },
-              child: Container(
-                  margin: EdgeInsets.only(left: 5, right: 5),
-                  child: Column(
-                    children: [
-                      Stack(
-                        children: [
-                          CachedNetworkImage(
-                            height: 110,
-                            width: MediaQuery.of(context).size.width,
-                            imageUrl: ytResult[position].thumbnail['medium']
-                            ['url'],
-                            fit: BoxFit.cover,
-                            placeholder: (context, url) => Image.asset(
-                              "assets/images/malikiaError.png",
-                              fit: BoxFit.contain,
-                              height: 120,
-                              width: 120,
-                              //color: colorPrimary,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                    margin: EdgeInsets.only(left: 5, right: 5),
+                    child: Column(
+                      children: [
+                        Stack(
+                          children: [
+                            CachedNetworkImage(
+                              height: 110,
+                              width: MediaQuery.of(context).size.width,
+                              imageUrl: ytResult[position].thumbnail['medium']
+                              ['url'],
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) => Image.asset(
+                                "assets/images/malikiaError.png",
+                                fit: BoxFit.cover,
+                                height: 120,
+                                width: 120,
+                                //color: colorPrimary,
+                              ),
+                              errorWidget: (context, url, error) =>
+                                  Image.asset(
+                                    "assets/images/malikiaError.png",
+                                    fit: BoxFit.cover,
+                                    height: 120,
+                                    width: 120,
+                                    //color: colorPrimary,
+                                  ),
                             ),
-                            errorWidget: (context, url, error) =>
-                                Image.asset(
-                                  "assets/images/malikiaError.png",
-                                  fit: BoxFit.contain,
-                                  height: 120,
-                                  width: 120,
-                                  //color: colorPrimary,
-                                ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        child: Flexible(
+                          ],
+                        ),
+                        Flexible(
                           child: Container(
                             child: Container(
                               alignment: Alignment.center,
@@ -385,7 +386,7 @@ class _YoutubeVideoPlayListState extends State<YoutubeVideoPlayList>
                                 maxLines: 2,
                                 textAlign: TextAlign.center,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.bold,
                                     color: colorPrimary),
@@ -393,9 +394,9 @@ class _YoutubeVideoPlayListState extends State<YoutubeVideoPlayList>
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  )
+                      ],
+                    )
+                ),
               ),
             ),
             Positioned(
@@ -416,7 +417,7 @@ class _YoutubeVideoPlayListState extends State<YoutubeVideoPlayList>
                   child: Container(
                     width: 40,
                     height: 40,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage("assets/images/jouer.png")
                         )
@@ -468,7 +469,7 @@ class _YoutubeVideoPlayListState extends State<YoutubeVideoPlayList>
       shrinkWrap: true,
       /* gridDelegate:
           SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),*/
-      physics: ClampingScrollPhysics(),
+      physics: const ClampingScrollPhysics(),
       itemBuilder: (context, position) {
         return GestureDetector(
           onTap: () {
@@ -482,72 +483,70 @@ class _YoutubeVideoPlayListState extends State<YoutubeVideoPlayList>
                 (Route<dynamic> route) => true);
           },
           child: Container(
-              margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(
+              margin: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 110,
-                      //alignment: Alignment.center,
-                      child: new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          ClipRRect(
-                            //borderRadius: BorderRadius.circular(20),
-                            child: CachedNetworkImage(
-                              imageUrl: ytResultPlaylist[position]
-                                  .thumbnail["medium"]["url"],
-                              fit: BoxFit.cover,
-                              width: 150,
-                              height: 110,
-                              placeholder: (context, url) => Image.asset(
-                                "assets/images/malikiaError.png",
-                              ),
-                              errorWidget: (context, url, error) => Image.asset(
-                                "assets/images/malikiaError.png",
-                              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: 110,
+                    //alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        ClipRRect(
+                          //borderRadius: BorderRadius.circular(20),
+                          child: CachedNetworkImage(
+                            imageUrl: ytResultPlaylist[position]
+                                .thumbnail["medium"]["url"],
+                            fit: BoxFit.cover,
+                            width: 150,
+                            height: 110,
+                            placeholder: (context, url) => Image.asset(
+                              "assets/images/malikiaError.png",
+                            ),
+                            errorWidget: (context, url, error) => Image.asset(
+                              "assets/images/malikiaError.png",
                             ),
                           ),
-                          Flexible(
-                            child: Container(
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.all(10),
-                              child: Text(
-                                ytResultPlaylist[position].title,
-                                maxLines: 2,
-                                textAlign: TextAlign.center,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.bold,
-                                    color: colorPrimary),
-                              ),
+                        ),
+                        Flexible(
+                          child: Container(
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              ytResultPlaylist[position].title,
+                              maxLines: 2,
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                  color: colorPrimary),
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              padding: EdgeInsets.all(10),
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.playlist_play,
-                                  size: 25,
-                                  color: colorPrimary,
-                                ),
-                                onPressed: () {},
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            child: IconButton(
+                              icon: const Icon(
+                                Icons.playlist_play,
+                                size: 25,
+                                color: colorPrimary,
                               ),
+                              onPressed: () {},
                             ),
-                          )
-                        ],
-                      ),
+                          ),
+                        )
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               )),
         );
       },
@@ -558,7 +557,7 @@ class _YoutubeVideoPlayListState extends State<YoutubeVideoPlayList>
   Widget makeShimmerEmissions() {
     return ListView.builder(
         shrinkWrap: true,
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         itemBuilder: (context, position) {
           return FadeAnimation(
             0.5,
@@ -572,7 +571,7 @@ class _YoutubeVideoPlayListState extends State<YoutubeVideoPlayList>
                   decoration: BoxDecoration(
                     color: Colors.transparent,
                     borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.transparent,
                         blurRadius: 10,

@@ -163,7 +163,7 @@ class _youtubeplayerListPageState extends State<youtubeplayerListPage> {
                                         child: widget.data["items"][index]["snippet"]["thumbnails"]["medium"]["url"] !=null?
 
                                         Container(
-                                          width: 140,
+                                          width: 200,
                                           height: 110,
                                           decoration: BoxDecoration(
                                             color: Colors.transparent,

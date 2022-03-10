@@ -61,20 +61,13 @@ class _PlusPageState extends State<PlusPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: wite,
+        elevation: 0,
+        centerTitle: true,
+        iconTheme: IconThemeData(color: gren,),
         title: Image.asset(
           "assets/images/1.png",
         ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back,color: gren,),
-          onPressed:
 
-              () {
-                if (widget.playerController != null)widget.playerController.play();
-                Navigator.of(context).pop();
-
-              }
-        ),
       ),
       body: Container(
         color: wite,

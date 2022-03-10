@@ -8,11 +8,11 @@ import 'package:malikia_tv/pages/splash.dart';
 import 'configs/size_config.dart';
 
 Future main() async {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));
 
-  runApp(new LayoutBuilder(
+  runApp( LayoutBuilder(
       builder: (context, constraints){
 
     return OrientationBuilder(builder: (context,orientation){
@@ -20,21 +20,26 @@ Future main() async {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Malikia TV',
-        localizationsDelegates: [GlobalMaterialLocalizations.delegate],
-        supportedLocales: [
-          //const Locale('en'),
-          const Locale('fr')
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
         ],
-        theme: new ThemeData(
+        supportedLocales: const [
+          //const Locale('en'),
+
+          Locale('fr')
+        ],
+        theme: ThemeData(
           primaryColor: Colors.blue[800],
           accentColor: Colors.blue,
           // Define the default font family.
           fontFamily: 'CeraPro',
-          pageTransitionsTheme: PageTransitionsTheme(builders: {
+          pageTransitionsTheme: const PageTransitionsTheme(builders: {
             TargetPlatform.android: CupertinoPageTransitionsBuilder(),
           }),
         ),
-        home: new SplashScreen(),
+        home: SplashScreen(),
         builder: EasyLoading.init(),
       );
     });

@@ -46,7 +46,7 @@ class _YoutubeChannelScreenState extends State<YoutubeChannelScreen> with Automa
   Color bg = const Color(0xFFEBEBEB);
   Future<Apimalikia> fetchYoutube() async {
     var postListUrl =
-    Uri.parse("https://acanvod.acan.group/myapiv2/appdetails/albayanetv");
+    Uri.parse("https://acanvod.acan.group/myapiv2/appdetails/malikia");
     final response = await http.get(postListUrl);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
@@ -280,14 +280,14 @@ class _YoutubeChannelScreenState extends State<YoutubeChannelScreen> with Automa
                             fit: BoxFit.cover,
                             placeholder: (context, url) => Image.asset(
                               "assets/images/malikiaError.png",
-                              fit: BoxFit.contain,
+                              fit: BoxFit.cover,
                               height: 120,
                               width: 120,
                               //color: colorPrimary,
                             ),
                             errorWidget: (context, url, error) => Image.asset(
                               "assets/images/malikiaError.png",
-                              fit: BoxFit.contain,
+                              fit: BoxFit.cover,
                               height: 120,
                               width: 120,
                               //color: colorPrimary,

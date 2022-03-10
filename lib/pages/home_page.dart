@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
           BetterPlayerDataSourceType.network,
           liveApi.directUrl,
           liveStream: true,
-
+          asmsTrackNames: ["3G 360p", "SD 480p", "HD 1080p"],
             notificationConfiguration: BetterPlayerNotificationConfiguration(
               showNotification: true,
 
@@ -604,7 +604,7 @@ class _HomePageState extends State<HomePage> {
   Widget item() {
     return
       apimalikia.aCANAPI[0].appDataToload =='vod'? Container(
-        margin: EdgeInsets.symmetric(vertical: 8.0),
+        margin: const EdgeInsets.symmetric(vertical: 8.0),
         //margin: const EdgeInsets.symmetric(horizontal: 10.2),
 
         height: 200.0,
@@ -613,113 +613,77 @@ class _HomePageState extends State<HomePage> {
               future: fetchAlauneByGroupe(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(
                       color: Colors.transparent,
                     ),
                   );
-                } else
-                  return Container(
-                    child: ListView.builder(
-                        itemCount: snapshot.data.allitems.length,
-                        shrinkWrap: true,
-                        itemBuilder: (_, i) {
-                          return Container(
-                            margin: const EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 10),
+                } else {
+                  return ListView.builder(
+                      itemCount: snapshot.data.allitems.length,
+                      shrinkWrap: true,
+                      itemBuilder: (_, i) {
+                        return Container(
+                          margin: const EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 10),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(0),
+                                color: wite,
+                                boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 2,
+                                      offset: Offset(0, 0),
+                                      color: Colors.grey.withOpacity(0.2)),
+                                ]),
                             child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(0),
-                                  color: wite,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        blurRadius: 2,
-                                        offset: Offset(0, 0),
-                                        color: Colors.grey.withOpacity(0.2)),
-                                  ]),
-                              child: Container(
-                                //padding: const EdgeInsets.all(8),
-                                child: Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    Expanded(
-                                      child: Container(
-                                      height: 80,
-                                      width: 140,
-                                      //padding: EdgeInsets.all(7),
-                                      child: GestureDetector(
-                                          child: FadeAnimation(
-                                              0.5,
-                                              ClipRRect(
-                                                borderRadius: BorderRadius.circular(0),
-                                                child: Container(
-                                                  child: CachedNetworkImage(
-                                                    imageUrl: snapshot
-                                                        .data.allitems[i].logo,
-                                                    width: 200,
-                                                    height: 100,
-                                                    fit: BoxFit.cover,
-                                                    placeholder: (context, url) =>
-                                                        Image.asset(
-                                                          "assets/images/malikiaError.png",
-                                                          width: 200,
-                                                          height: 100,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                    errorWidget:
-                                                        (context, url, error) =>
-                                                        Image.asset(
-                                                          "assets/images/malikiaError.png",
-                                                          width: 200,
-                                                          height: 100,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                  ),
-                                                  width: MediaQuery.of(context)
-                                                      .size
-                                                      .width,
+                              //padding: const EdgeInsets.all(8),
+                              child: Row(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Expanded(
+                                    child: Container(
+                                    height: 80,
+                                    width: 140,
+                                    //padding: EdgeInsets.all(7),
+                                    child: GestureDetector(
+                                        child: FadeAnimation(
+                                            0.5,
+                                            ClipRRect(
+                                              borderRadius: BorderRadius.circular(0),
+                                              child: Container(
+                                                child: CachedNetworkImage(
+                                                  imageUrl: snapshot
+                                                      .data.allitems[i].logo,
+                                                  width: 200,
                                                   height: 100,
+                                                  fit: BoxFit.cover,
+                                                  placeholder: (context, url) =>
+                                                      Image.asset(
+                                                        "assets/images/malikiaError.png",
+                                                        width: 200,
+                                                        height: 100,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                  errorWidget:
+                                                      (context, url, error) =>
+                                                      Image.asset(
+                                                        "assets/images/malikiaError.png",
+                                                        width: 200,
+                                                        height: 100,
+                                                        fit: BoxFit.cover,
+                                                      ),
                                                 ),
-                                              )),
-                                          onTap: () {
-                                            if (_betterPlayerController != null)_betterPlayerController.pause();
-                                            //logger.d(snapshot.data.allitems[index].video_url);
-                                            Navigator.of(context).pushAndRemoveUntil(
-                                                MaterialPageRoute(
-                                                    builder: (context) => LecteurDesReplayesEmisions(
-                                                      json: snapshot.data.allitems[i].videoUrl,
-                                                      //related: snapshot.data.allitems[i].relatedItems,
-                                                      texte: snapshot.data.allitems[i].title,
-                                                      descpt: snapshot.data.allitems[i].desc,
-                                                      heure: snapshot.data.allitems[i].time,
-                                                      tpe: snapshot.data.allitems[i].type,
-                                                      //vido_url: snapshot.data.allitems[i].feedUrl,
-                                                      AlauneByGroup: snapshot.data,
-                                                    )
-                                                ),
-                                                    (Route<dynamic> route) => true);
-                                            var  logger = Logger();
-                                            logger.d(snapshot.data.allitems[i].relatedItems);
-                                          }
-                                      ),
-                                    ),),
-                                    SizedBox(width: 5,),
-                                    Expanded(
-                                      flex: 1,
-                                      child: RichText(
-                                        overflow: TextOverflow.ellipsis,
-                                        strutStyle: StrutStyle(fontSize: 12.0),
-                                        text: TextSpan(
-                                            style: TextStyle(color: Colors.black),
-                                            text:
-                                            "${snapshot.data.allitems[i].title}"),
-                                      ),
-                                    ),
-                                    Container(
-                                      child: ElevatedButton(
-                                        onPressed: () {
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                height: 100,
+                                              ),
+                                            )),
+                                        onTap: () {
                                           if (_betterPlayerController != null)_betterPlayerController.pause();
+                                          //logger.d(snapshot.data.allitems[index].video_url);
                                           Navigator.of(context).pushAndRemoveUntil(
                                               MaterialPageRoute(
                                                   builder: (context) => LecteurDesReplayesEmisions(
@@ -729,26 +693,61 @@ class _HomePageState extends State<HomePage> {
                                                     descpt: snapshot.data.allitems[i].desc,
                                                     heure: snapshot.data.allitems[i].time,
                                                     tpe: snapshot.data.allitems[i].type,
-                                                    vido_url: snapshot.data.allitems[i].feedUrl,
+                                                    //vido_url: snapshot.data.allitems[i].feedUrl,
                                                     AlauneByGroup: snapshot.data,
                                                   )
                                               ),
                                                   (Route<dynamic> route) => true);
-                                        },
-                                        child: Icon(Icons.play_arrow,
-                                            color: Colors.white),
-                                        style: ElevatedButton.styleFrom(
-                                            shape: CircleBorder(), primary: gren),
-                                      ),
-                                      alignment: Alignment.bottomRight,
-                                    )
-                                  ],
-                                ),
+                                          var  logger = Logger();
+                                          logger.d(snapshot.data.allitems[i].relatedItems);
+                                        }
+                                    ),
+                                  ),),
+                                  SizedBox(width: 5,),
+                                  Expanded(
+                                    flex: 1,
+                                    child: RichText(
+                                      overflow: TextOverflow.ellipsis,
+                                      strutStyle: StrutStyle(fontSize: 12.0),
+                                      text: TextSpan(
+                                          style: TextStyle(color: Colors.black),
+                                          text:
+                                          "${snapshot.data.allitems[i].title}"),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        if (_betterPlayerController != null)_betterPlayerController.pause();
+                                        Navigator.of(context).pushAndRemoveUntil(
+                                            MaterialPageRoute(
+                                                builder: (context) => LecteurDesReplayesEmisions(
+                                                  json: snapshot.data.allitems[i].videoUrl,
+                                                  //related: snapshot.data.allitems[i].relatedItems,
+                                                  texte: snapshot.data.allitems[i].title,
+                                                  descpt: snapshot.data.allitems[i].desc,
+                                                  heure: snapshot.data.allitems[i].time,
+                                                  tpe: snapshot.data.allitems[i].type,
+                                                  vido_url: snapshot.data.allitems[i].feedUrl,
+                                                  AlauneByGroup: snapshot.data,
+                                                )
+                                            ),
+                                                (Route<dynamic> route) => true);
+                                      },
+                                      child: Icon(Icons.play_arrow,
+                                          color: Colors.white),
+                                      style: ElevatedButton.styleFrom(
+                                          shape: CircleBorder(), primary: gren),
+                                    ),
+                                    alignment: Alignment.bottomRight,
+                                  )
+                                ],
                               ),
                             ),
-                          );
-                        }),
-                  );
+                          ),
+                        );
+                      });
+                }
               }),
         )):
     Container(
@@ -892,140 +891,142 @@ class _HomePageState extends State<HomePage> {
             future: fetchReplay(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(
                     color: Colors.transparent,
                   ),
                 );
-              } else
-                return Container(
-                  child: ListView.builder(
-                      itemCount: snapshot.data.allitems.length,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (_, i) {
-                        return Container(
-                          margin: const EdgeInsets.only(left: 6,  top: 0, bottom: 6),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(0),
-                                color: wite,
-                                boxShadow: [
-                                  BoxShadow(
-                                      blurRadius: 2,
-                                      offset: Offset(0, 0),
-                                      color: Colors.grey.withOpacity(0.2)),
-                                ]),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Column(
-                                  children:<Widget> [
-                                    Container(
-                                      height: 120,
-                                      width: 152,
-                                      child: GestureDetector(
-                                        child: FadeAnimation(
-                                            0.5,
-                                            ClipRRect(
-                                              borderRadius:
-                                              BorderRadius.circular(0),
-                                              child: Container(
-                                                child: CachedNetworkImage(
-                                                  imageUrl: snapshot
-                                                      .data.allitems[i].logo,
-                                                  width: 200,
-                                                  height: 200,
-                                                  fit: BoxFit.cover,
-                                                  placeholder: (context, url) =>
-                                                      Image.asset(
-                                                        "assets/images/malikiaError.png",
-                                                        width: 200,
-                                                        height: 100,
-                                                        fit: BoxFit.contain,
-                                                      ),
-                                                  errorWidget:
-                                                      (context, url, error) =>
-                                                      Image.asset(
-                                                        "assets/images/malikiaError.png",
-                                                        width: 200,
-                                                        height: 100,
-                                                        fit: BoxFit.contain,
-                                                      ),
-                                                ),
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
-                                                height: 140,
+              } else {
+                return ListView.builder(
+                    itemCount: snapshot.data.allitems.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (_, i) {
+                      return Container(
+                        margin: const EdgeInsets.only(left: 6,  top: 0, bottom: 6),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(0),
+                              color: wite,
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 2,
+                                    offset: Offset(0, 0),
+                                    color: Colors.grey.withOpacity(0.2)),
+                              ]),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Column(
+                                children:<Widget> [
+                                  Container(
+                                    height: 120,
+                                    width: 152,
+                                    child: GestureDetector(
+                                      child: FadeAnimation(
+                                          0.5,
+                                          ClipRRect(
+                                            borderRadius:
+                                            BorderRadius.circular(0),
+                                            child: Container(
+                                              child: CachedNetworkImage(
+                                                imageUrl: snapshot
+                                                    .data.allitems[i].logo,
+                                                width: 200,
+                                                height: 200,
+                                                fit: BoxFit.cover,
+                                                placeholder: (context, url) =>
+                                                    Image.asset(
+                                                      "assets/images/malikiaError.png",
+                                                      width: 200,
+                                                      height: 100,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                errorWidget:
+                                                    (context, url, error) =>
+                                                    Image.asset(
+                                                      "assets/images/malikiaError.png",
+                                                      width: 200,
+                                                      height: 100,
+                                                      fit: BoxFit.contain,
+                                                    ),
                                               ),
-                                            )),
-                                        onTap: () {
-                                          if (_betterPlayerController != null)_betterPlayerController.pause();
-                                          //logger.d(snapshot.data.allitems[index].video_url);
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (context) => EmisionsPage(
-                                                    lien: snapshot.data.allitems[i].feedUrl,
-                                                    listChannelsbygroup: snapshot.data
-                                                )
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              height: 140,
                                             ),
+                                          )),
+                                      onTap: () {
+                                        if (_betterPlayerController != null)_betterPlayerController.pause();
+                                        //logger.d(snapshot.data.allitems[index].video_url);
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) => EmisionsPage(
+                                                  lien: snapshot.data.allitems[i].feedUrl,
+                                                  listChannelsbygroup: snapshot.data
+                                              )
+                                          ),
+                                        );
+                                        var  logger = Logger();
+                                        //logger.d(snapshot.data.allitems[i].relatedItems);
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 9,),
+                              Row(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceEvenly,
+                                mainAxisSize: MainAxisSize.min,
+
+                                children: <Widget>[
+                                  Container(
+                                    child: Stack(
+                                      children: [RichText(
+                                        overflow: TextOverflow.ellipsis,
+                                        strutStyle: StrutStyle(fontSize: 12.0),
+                                        text: TextSpan(
+                                            style: TextStyle(color: Colors.black),
+                                            text:
+                                            "${snapshot.data.allitems[i].desc}\n".substring(0,10)),
+                                      )],
+                                    ),
+                                  ),
+                                  SizedBox(width: 30,),
+                                  Container(
+                                    child: IconButton(
+                                      icon: SvgPicture.asset(
+                                        lecteur,
+                                        color: gren,
+                                        width: 27,
+                                      ),
+                                      iconSize: 14,
+                                        onPressed: () {
+                                          if (_betterPlayerController != null)_betterPlayerController.pause();
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) {
+                                              return ReplyerPage(
+                                                apimalikia: apimalikia,
+                                                ytResultPlaylist: widget.ytResultPlaylist,
+                                              );
+                                            }),
                                           );
-                                          var  logger = Logger();
-                                          //logger.d(snapshot.data.allitems[i].relatedItems);
                                         },
-                                      ),
                                     ),
-                                  ],
-                                ),
-                                SizedBox(height: 9,),
-                                Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
-                                  mainAxisSize: MainAxisSize.min,
+                                    alignment: Alignment.bottomRight,
+                                  )
+                                ],
+                              ),
 
-                                  children: <Widget>[
-                                    Container(
-                                      child: Stack(
-                                        children: [RichText(
-                                          overflow: TextOverflow.ellipsis,
-                                          strutStyle: StrutStyle(fontSize: 12.0),
-                                          text: TextSpan(
-                                              style: TextStyle(color: Colors.black),
-                                              text:
-                                              "${snapshot.data.allitems[i].desc}\n".substring(0,10)),
-                                        )],
-                                      ),
-                                    ),
-                                    SizedBox(width: 30,),
-                                    Container(
-                                      child: IconButton(
-                                        icon: SvgPicture.asset(
-                                          lecteur,
-                                          color: gren,
-                                          width: 27,
-                                        ),
-                                        iconSize: 14,
-                                          onPressed: () {
-                                            if (_betterPlayerController != null)_betterPlayerController.pause();
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(builder: (context) {
-                                                return ReplyerPage();
-                                              }),
-                                            );
-                                          },
-                                      ),
-                                      alignment: Alignment.bottomRight,
-                                    )
-                                  ],
-                                ),
-
-                              ],
-                            ),
+                            ],
                           ),
-                        );
-                      }),
-                );
+                        ),
+                      );
+                    });
+              }
             })):Container(
       //margin: const EdgeInsets.symmetric(horizontal: 10.2),
         margin: EdgeInsets.symmetric(vertical: 8.0),
@@ -1140,7 +1141,10 @@ class _HomePageState extends State<HomePage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(builder: (context) {
-                                      return ReplyerPage();
+                                      return ReplyerPage(
+                                        apimalikia: apimalikia,
+                                        ytResultPlaylist: widget.ytResultPlaylist,
+                                      );
                                     }),
                                   );
                                 },

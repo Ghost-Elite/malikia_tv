@@ -77,19 +77,11 @@ class _ReplyerPageState extends State<ReplyerPage> {
          backgroundColor: wite,
          elevation: 0,
          centerTitle: true,
-         iconTheme: IconThemeData(color: colorPrimary),
-         leading: IconButton(
-           icon: Icon(
-             Icons.arrow_back,
-             color: colorPrimary,
-           ),
-           onPressed: (){
-             Navigator.of(context).pop();
-           },
-         ),
+         iconTheme: IconThemeData(color: gren,),
          title: Image.asset(
            "assets/images/1.png",
          ),
+
        ),
         body: Container(
           width: MediaQuery.of(context).size.width,
@@ -115,7 +107,7 @@ class _ReplyerPageState extends State<ReplyerPage> {
                     color: gren,
                   ),
                 );
-              } else
+              } else {
                 return GridView.count(
                   scrollDirection: Axis.vertical,
                   crossAxisCount: 2 ,
@@ -138,15 +130,15 @@ class _ReplyerPageState extends State<ReplyerPage> {
                                       fit: BoxFit.cover,
                                       placeholder: (context, url) => Image.asset(
                                         "assets/images/malikiaError.png",width: 150,
-                                        fit: BoxFit.contain,
+                                        fit: BoxFit.cover,
                                       ),
                                       errorWidget: (context, url, error) => Image.asset(
                                         "assets/images/malikiaError.png",width: 150,
-                                        fit: BoxFit.contain,
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
                                     width: MediaQuery.of(context).size.width,
-                                    height: 150,
+                                    height: 130,
                                   ),
                                 )
                             ),
@@ -181,6 +173,7 @@ class _ReplyerPageState extends State<ReplyerPage> {
                     );
                   }),
                 );
+              }
             }
         ),
       ),
@@ -212,15 +205,15 @@ class _ReplyerPageState extends State<ReplyerPage> {
                               fit: BoxFit.cover,
                               placeholder: (context, url) => Image.asset(
                                 "assets/images/malikiaError.png",width: 150,
-                                fit: BoxFit.contain,
+                                fit: BoxFit.cover,
                               ),
                               errorWidget: (context, url, error) => Image.asset(
                                 "assets/images/malikiaError.png",width: 150,
-                                fit: BoxFit.contain,
+                                fit: BoxFit.cover,
                               ),
                             ):Container(),
                             width: MediaQuery.of(context).size.width,
-                            height: 120,
+                            height: 130,
                           ),
                         )
                     ),

@@ -357,12 +357,12 @@ class _LecteurDesReplayesState extends State<LecteurDesReplayes> with AutomaticK
             future: fetchReplay(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(
                     color: Colors.white,
                   ),
                 );
-              } else
+              } else {
                 return GridView.count(
                   //scrollDirection: Axis.vertical,
                   physics: const NeverScrollableScrollPhysics(),
@@ -438,6 +438,7 @@ class _LecteurDesReplayesState extends State<LecteurDesReplayes> with AutomaticK
                     );
                   }),
                 );
+              }
             }),
       ),
     );
